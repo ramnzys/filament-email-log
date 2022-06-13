@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "ramnzys/filament-email-log",
+    "description": "This is my package filament-email-log",
     "keywords": [
-        ":vendor_name",
+        "ramnzys",
         "laravel",
-        ":package_slug"
+        "filament-email-log"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/ramnzys/filament-email-log",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Ramón E. Zayas",
+            "email": "ramnzys@gmail.com",
             "role": "Developer"
         }
     ],
@@ -35,13 +35,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "Ramnzys\\FilamentEmailLog\\": "src",
+            "Ramnzys\\FilamentEmailLog\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "Ramnzys\\FilamentEmailLog\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -56,10 +56,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Ramnzys\\FilamentEmailLog\\FilamentEmailLogServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "FilamentEmailLog": "Ramnzys\\FilamentEmailLog\\Facades\\FilamentEmailLog"
             }
         }
     },
