@@ -3,9 +3,9 @@
 namespace Ramnzys\FilamentEmailLog;
 
 use Filament\PluginServiceProvider;
-use Ramnzys\FilamentEmailLog\Commands\FilamentEmailLogCommand;
 use Ramnzys\FilamentEmailLog\Filament\Resources\EmailResource;
 use Ramnzys\FilamentEmailLog\Providers\EmailMessageServiceProvider;
+use Ramnzys\FilamentEmailLog\Commands\FilamentEmailLogCommand;
 use Spatie\LaravelPackageTools\Package;
 
 class FilamentEmailLogServiceProvider extends PluginServiceProvider
