@@ -23,12 +23,9 @@ class FilamentEmailLogger
      * @param  object  $event
      * @return void
      */
-    public function handle(MessageSent $event)
+    public function handle($event)
     {
         $email = $event->message;
-
-        ray()->clearAll();
-        ray($email->getHtmlBody());
 
         Email::create([
             'from' => $this->RecipientsToString($email->getFrom()),
@@ -38,11 +35,10 @@ class FilamentEmailLogger
             'subject' => $email->getSubject(),
             'html_body' => $email->getHtmlBody(),
             'text_body' => $email->getTextBody(),
-            //     //'body' => 'el body...',
         ]);
     }
 
-    private function RecipientsToString(array $recipients): ?string
+    private function RecipientsToString(array $recipients): string
     {
         return implode(
             ",",

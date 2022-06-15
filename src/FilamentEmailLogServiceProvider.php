@@ -29,8 +29,7 @@ class FilamentEmailLogServiceProvider extends PluginServiceProvider
         $package
             ->name('filament-email-log')
             ->hasConfigFile('filament-email-log')
-            ->hasMigration('create_filament_email_log_table')
-            ->hasCommand(FilamentEmailLogCommand::class);
+            ->hasMigration('create_filament_email_log_table');
 
         $this->app->register(EmailMessageServiceProvider::class);
     }

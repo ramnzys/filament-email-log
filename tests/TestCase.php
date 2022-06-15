@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Ramnzys\FilamentEmailLog\FilamentEmailLogServiceProvider;
+use Filament\FilamentServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -22,6 +23,7 @@ class TestCase extends Orchestra
     {
         return [
             LivewireServiceProvider::class,
+            FilamentServiceProvider::class,
             FilamentEmailLogServiceProvider::class,
         ];
     }
