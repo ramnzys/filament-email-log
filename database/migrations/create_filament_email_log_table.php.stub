@@ -8,12 +8,23 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('filament_email_log_table', function (Blueprint $table) {
+        Schema::create('filament_email_log', function (Blueprint $table) {
             $table->id();
 
-            // add fields
+            $table->string('from')->nullable();
+            $table->string('to')->nullable();
+            $table->string('cc')->nullable();
+            $table->string('bcc')->nullable();
+            $table->string('subject')->nullable();
+            $table->longText('text_body')->nullable();
+            $table->longText('html_body')->nullable();
 
             $table->timestamps();
         });
+    }
+
+    public function down()
+    {
+        Schema::drop('filament_email_log');
     }
 };

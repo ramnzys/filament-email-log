@@ -2,12 +2,20 @@
 
 namespace Ramnzys\FilamentEmailLog;
 
-use Spatie\LaravelPackageTools\Package;
-use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Filament\PluginServiceProvider;
 use Ramnzys\FilamentEmailLog\Commands\FilamentEmailLogCommand;
+use Ramnzys\FilamentEmailLog\Filament\Resources\EmailResource;
+use Ramnzys\FilamentEmailLog\Providers\EmailMessageServiceProvider;
+use Spatie\LaravelPackageTools\Package;
 
-class FilamentEmailLogServiceProvider extends PackageServiceProvider
+class FilamentEmailLogServiceProvider extends PluginServiceProvider
 {
+    public static string $name = 'filament-email-log';
+
+    protected array $resources = [
+        EmailResource::class,
+    ];
+
     public function configurePackage(Package $package): void
     {
         /*
@@ -15,11 +23,15 @@ class FilamentEmailLogServiceProvider extends PackageServiceProvider
          *
          * More info: https://github.com/spatie/laravel-package-tools
          */
+
+        parent::configurePackage($package);
+
         $package
             ->name('filament-email-log')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_filament-email-log_table')
+            ->hasConfigFile('filament-email-log')
+            ->hasMigration('create_filament_email_log_table')
             ->hasCommand(FilamentEmailLogCommand::class);
+
+        $this->app->register(EmailMessageServiceProvider::class);
     }
 }
