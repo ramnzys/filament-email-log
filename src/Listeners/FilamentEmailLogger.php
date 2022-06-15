@@ -2,7 +2,6 @@
 
 namespace Ramnzys\FilamentEmailLog\Listeners;
 
-use Illuminate\Mail\Events\MessageSent;
 use Ramnzys\FilamentEmailLog\Models\Email;
 
 class FilamentEmailLogger
