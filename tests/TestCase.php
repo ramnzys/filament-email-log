@@ -3,6 +3,7 @@
 namespace Ramnzys\FilamentEmailLog\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Ramnzys\FilamentEmailLog\FilamentEmailLogServiceProvider;
 
@@ -13,13 +14,14 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Ramnzys\\FilamentEmailLog\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'Ramnzys\\FilamentEmailLog\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
         );
     }
 
     protected function getPackageProviders($app)
     {
         return [
+            LivewireServiceProvider::class,
             FilamentEmailLogServiceProvider::class,
         ];
     }
