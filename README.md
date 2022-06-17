@@ -33,15 +33,14 @@ This is the contents of the published config file:
 
 ```php
 return [
+
+    'resource' => [
+        'group' => null,
+        'sort' => null,
+    ],
+
 ];
 ```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="filament-email-log-views"
-```
-
 ## Usage
 
 This package will automatically register the `EmailResource`. You will be able to see it when you visit your Filament admin panel.
