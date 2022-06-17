@@ -2,6 +2,7 @@
 
 namespace Ramnzys\FilamentEmailLog\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -19,6 +20,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Email extends Model
 {
+    use HasFactory;
+
     protected $table = 'filament_email_log';
 
     public $guarded = [];

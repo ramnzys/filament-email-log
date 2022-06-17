@@ -36,4 +36,11 @@
     <logging>
         <junit outputFile="build/report.junit.xml"/>
     </logging>
+    <php>
+        <env name="APP_ENV" value="testing"/>
+        <env name="APP_KEY" value="12345678901234567890123456789012"/>
+        <env name="CACHE_DRIVER" value="array"/>
+        <env name="QUEUE_CONNECTION" value="sync"/>
+        <env name="MAIL_MAILER" value="log"/>
+    </php>
 </phpunit>
