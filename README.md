@@ -1,5 +1,5 @@
 
-# This is my package filament-email-log
+![](https://banners.beyondco.de/filament-email-log.png?theme=light&packageManager=composer+require&packageName=ramnzys%2Ffilament-email-log&pattern=autumn&style=style_1&description=Laravel+sent+email+log+on+filament+dashboard&md=1&showWatermark=1&fontSize=100px&images=https%3A%2F%2Flaravel.com%2Fimg%2Flogomark.min.svg)
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/ramnzys/filament-email-log.svg?style=flat-square)](https://packagist.org/packages/ramnzys/filament-email-log)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/ramnzys/filament-email-log/run-tests?label=tests)](https://github.com/ramnzys/filament-email-log/actions?query=workflow%3Arun-tests+branch%3Amain)
@@ -29,6 +29,14 @@ You can publish the config file with:
 php artisan vendor:publish --tag="filament-email-log-config"
 ```
 
+## Usage
+
+This package will automatically register the `EmailResource`. You will be able to see it when you visit your Filament admin panel.
+
+### Customizing the group
+
+You can customize the navigation group for the `EmailResource` by publishing the configuration file and updating the `resource.group` and `resource.sort` values.
+
 This is the contents of the published config file:
 
 ```php
@@ -41,14 +49,6 @@ return [
 
 ];
 ```
-## Usage
-
-This package will automatically register the `EmailResource`. You will be able to see it when you visit your Filament admin panel.
-
-### Customizing the group
-
-You can customize the navigation group for the `EmailResource` by publishing the configuration file and updating the `resource.group` and `resource.sort` values.
-
 ## Testing
 
 ```bash

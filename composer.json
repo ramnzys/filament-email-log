@@ -1,10 +1,8 @@
 {
     "name": "ramnzys/filament-email-log",
-    "description": "This is my package filament-email-log",
+    "description": "This package provides a Filament resource to view all Laravel outgoing emails.",
     "keywords": [
-        "ramnzys",
-        "laravel",
-        "filament-email-log"
+        "laravel", "filament", "email"
     ],
     "homepage": "https://github.com/ramnzys/filament-email-log",
     "license": "MIT",
