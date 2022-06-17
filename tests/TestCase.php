@@ -18,7 +18,6 @@ use Ramnzys\FilamentEmailLog\Tests\Models\User;
 
 class TestCase extends Orchestra
 {
-
     protected User $adminUser;
 
     protected function setUp(): void

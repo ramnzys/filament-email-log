@@ -1,14 +1,12 @@
 <?php
 
 use Faker\Factory;
-use Illuminate\Foundation\Testing\RefreshDatabaseState;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Mail;
 
 use function Pest\Laravel\actingAs;
 use Ramnzys\FilamentEmailLog\Filament\Resources\EmailResource;
 use Ramnzys\FilamentEmailLog\Models\Email;
-use Ramnzys\FilamentEmailLog\Tests\Models\User;
 
 it('redirects on non logged users', function () {
     $this->get(Config::get('filament.path'))

@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Mail;
 use Faker\Factory;
+use Illuminate\Support\Facades\Mail;
 use function Pest\Laravel\assertDatabaseCount;
 use function Pest\Laravel\assertModelExists;
 use function PHPUnit\Framework\assertEquals;
