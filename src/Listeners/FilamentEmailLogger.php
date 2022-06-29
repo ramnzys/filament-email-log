@@ -19,7 +19,7 @@ class FilamentEmailLogger
     /**
      * Handle the event.
      *
-     * @param \Illuminate\Mail\Events\MessageSent  $event
+     * @param object $event
      * @return void
      */
     public function handle($event)
