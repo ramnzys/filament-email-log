@@ -24,5 +24,5 @@ class Email extends Model
 
     protected $table = 'filament_email_log';
 
-    public $guarded = [];
+    protected $guarded = [];
 }
