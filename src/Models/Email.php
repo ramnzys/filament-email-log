@@ -4,6 +4,7 @@ namespace Ramnzys\FilamentEmailLog\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Prunable;
 
 /**
  * Email
@@ -21,8 +22,19 @@ use Illuminate\Database\Eloquent\Model;
 class Email extends Model
 {
     use HasFactory;
+    use Prunable;
 
     protected $table = 'filament_email_log';
 
     protected $guarded = [];
+
+    /**
+     * Get the prunable model query.
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function prunable()
+    {
+        return static::where('created_at', '<=', now()->subDays(Config::('filament-email-log.keep_email_for_days')));
+    }
 }
