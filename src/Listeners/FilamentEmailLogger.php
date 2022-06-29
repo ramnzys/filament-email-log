@@ -20,12 +20,11 @@ class FilamentEmailLogger
     /**
      * Handle the event.
      *
-     * @param  object  $event
+     * @param  MessageSent  $event
      * @return void
      */
-    public function handle(MessageSent $event)
+    public function handle($event)
     {
-        /** @var \Symfony\Component\Mailer\SentMessage */
         $rawMessage = $event->sent->getSymfonySentMessage();
         $email = $event->message;
 
