@@ -2,7 +2,6 @@
 
 namespace Ramnzys\FilamentEmailLog\Listeners;
 
-use Illuminate\Mail\Events\MessageSent;
 use Ramnzys\FilamentEmailLog\Models\Email;
 
 class FilamentEmailLogger
@@ -20,7 +19,7 @@ class FilamentEmailLogger
     /**
      * Handle the event.
      *
-     * @param  MessageSent  $event
+     * @param \Illuminate\Mail\Events\MessageSent  $event
      * @return void
      */
     public function handle($event)
