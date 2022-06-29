@@ -2,6 +2,7 @@
 
 namespace Ramnzys\FilamentEmailLog\Listeners;
 
+use Illuminate\Mail\Events\MessageSent;
 use Ramnzys\FilamentEmailLog\Models\Email;
 
 class FilamentEmailLogger
@@ -22,8 +23,10 @@ class FilamentEmailLogger
      * @param  object  $event
      * @return void
      */
-    public function handle($event)
+    public function handle(MessageSent $event)
     {
+        /** @var \Symfony\Component\Mailer\SentMessage */
+        $rawMessage = $event->sent->getSymfonySentMessage();
         $email = $event->message;
 
         Email::create([
@@ -34,6 +37,8 @@ class FilamentEmailLogger
             'subject' => $email->getSubject(),
             'html_body' => $email->getHtmlBody(),
             'text_body' => $email->getTextBody(),
+            'raw_body' => $rawMessage->getMessage()->toString(),
+            'sent_debug_info' => $rawMessage->getDebug(),
         ]);
     }
 

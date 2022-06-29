@@ -54,6 +54,18 @@ class EmailResource extends Resource
                         ->schema([
                             Textarea::make('text_body')->disableLabel(),
                         ]),
+                    Tab::make('Raw')
+                        ->schema([
+                            Textarea::make('raw_body')
+                                ->extraAttributes(['class' => 'font-mono text-xs'])
+                                ->disableLabel(),
+                        ]),
+                    Tab::make('Debug information')
+                        ->schema([
+                            Textarea::make('sent_debug_info')
+                                ->extraAttributes(['class' => 'font-mono text-xs'])
+                                ->disableLabel(),
+                        ]),
                 ])->columnSpan(2),
             ]);
     }
