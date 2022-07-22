@@ -52,9 +52,7 @@
     },
     "config": {
         "sort-packages": true,
-        "allow-plugins": {
-            "pestphp/pest-plugin": true
-        }
+        "allow-plugins": true
     },
     "extra": {
         "laravel": {
