@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Mail;
 
 use function Pest\Laravel\actingAs;
+
 use Ramnzys\FilamentEmailLog\Filament\Resources\EmailResource;
 use Ramnzys\FilamentEmailLog\Models\Email;
 
