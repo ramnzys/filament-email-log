@@ -8,6 +8,7 @@ use Filament\FilamentServiceProvider;
 use Filament\Forms\FormsServiceProvider;
 use Filament\Support\SupportServiceProvider;
 use Filament\Tables\TablesServiceProvider;
+use Filament\Notifications\NotificationsServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Schema\Blueprint;
 use Livewire\LivewireServiceProvider;
@@ -39,6 +40,7 @@ class TestCase extends Orchestra
             FilamentServiceProvider::class,
             FormsServiceProvider::class,
             LivewireServiceProvider::class,
+            NotificationsServiceProvider::class,
             SupportServiceProvider::class,
             TablesServiceProvider::class,
 
