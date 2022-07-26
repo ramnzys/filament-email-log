@@ -28,7 +28,7 @@ class TestCase extends Orchestra
         $this->setUpDatabase($this->app);
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Ramnzys\\FilamentEmailLog\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
+            fn (string $modelName) => 'Ramnzys\\FilamentEmailLog\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
     }
 
@@ -58,10 +58,10 @@ class TestCase extends Orchestra
     {
         config()->set('database.default', 'testing');
 
-        $migration = include __DIR__ . '/../database/migrations/create_filament_email_log_table.php.stub';
+        $migration = include __DIR__.'/../database/migrations/create_filament_email_log_table.php.stub';
         $migration->up();
 
-        $migration = include __DIR__ . '/../database/migrations/add_raw_and_debug_fields_to_filament_email_log_table.php.stub';
+        $migration = include __DIR__.'/../database/migrations/add_raw_and_debug_fields_to_filament_email_log_table.php.stub';
         $migration->up();
     }
 
