@@ -19,7 +19,7 @@ class FilamentEmailLogger
     /**
      * Handle the event.
      *
-     * @param object $event
+     * @param  object  $event
      * @return void
      */
     public function handle($event)
@@ -43,9 +43,9 @@ class FilamentEmailLogger
     private function RecipientsToString(array $recipients): string
     {
         return implode(
-            ",",
+            ',',
             array_map(function ($email) {
-                return "{$email->getAddress()}" . ($email->getName() ? " <{$email->getName()}>" : "");
+                return "{$email->getAddress()}".($email->getName() ? " <{$email->getName()}>" : '');
             }, $recipients)
         );
     }
