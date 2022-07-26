@@ -3,9 +3,7 @@
 use Faker\Factory;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Mail;
-
 use function Pest\Laravel\actingAs;
-
 use Ramnzys\FilamentEmailLog\Filament\Resources\EmailResource;
 use Ramnzys\FilamentEmailLog\Models\Email;
 
@@ -14,19 +12,13 @@ it('redirects on non logged users', function () {
         ->assertRedirect();
 });
 
-
-
 it('shows dashboard to logged users', function () {
     actingAs($this->adminUser)->get(Config::get('filament.path'))->assertSuccessful();
 });
 
-
-
 it('can render EmailResourcePage', function () {
     actingAs($this->adminUser)->get(EmailResource::getUrl('index'))->assertSuccessful();
 });
-
-
 
 it('can display an email', function () {
     $faker = Factory::create();

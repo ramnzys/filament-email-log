@@ -20,8 +20,6 @@ use Illuminate\Support\Facades\Config;
  * @property string $raw_body
  * @property string $sent_debug_info
  * @property \Illuminate\Support\Carbon|null $created_at
- *
- * @package Ramnzys\FilamentEmailLog\Models
  */
 class Email extends Model
 {
