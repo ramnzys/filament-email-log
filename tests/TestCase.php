@@ -28,35 +28,40 @@ class TestCase extends Orchestra
         $this->setUpDatabase($this->app);
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Ramnzys\\FilamentEmailLog\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'Ramnzys\\FilamentEmailLog\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
         );
     }
 
     protected function getPackageProviders($app)
     {
-        return [
+        $packageProviders = [
             BladeHeroiconsServiceProvider::class,
             BladeIconsServiceProvider::class,
             FilamentServiceProvider::class,
             FormsServiceProvider::class,
             LivewireServiceProvider::class,
-            NotificationsServiceProvider::class,
             SupportServiceProvider::class,
             TablesServiceProvider::class,
 
             EmailMessageServiceProvider::class,
             FilamentEmailLogServiceProvider::class,
         ];
+
+        if (class_exists(NotificationsServiceProvider::class)) {
+            $packageProviders[] = NotificationsServiceProvider::class;
+        }
+
+        return $packageProviders;
     }
 
     public function getEnvironmentSetUp($app)
     {
         config()->set('database.default', 'testing');
 
-        $migration = include __DIR__.'/../database/migrations/create_filament_email_log_table.php.stub';
+        $migration = include __DIR__ . '/../database/migrations/create_filament_email_log_table.php.stub';
         $migration->up();
 
-        $migration = include __DIR__.'/../database/migrations/add_raw_and_debug_fields_to_filament_email_log_table.php.stub';
+        $migration = include __DIR__ . '/../database/migrations/add_raw_and_debug_fields_to_filament_email_log_table.php.stub';
         $migration->up();
     }
 
