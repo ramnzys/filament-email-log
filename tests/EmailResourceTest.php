@@ -4,6 +4,10 @@ use Faker\Factory;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Mail;
 use function Pest\Laravel\actingAs;
+use function Pest\Laravel\artisan;
+use function Pest\Laravel\assertDatabaseHas;
+use function Pest\Laravel\assertDatabaseMissing;
+use function Pest\Laravel\travel;
 use Ramnzys\FilamentEmailLog\Filament\Resources\EmailResource;
 use Ramnzys\FilamentEmailLog\Models\Email;
 
@@ -36,4 +40,31 @@ it('can display an email', function () {
         ->get(EmailResource::getUrl('view', $email->id))
         ->assertSee($recipient)
         ->assertSee($subject);
+});
+
+it('can purge old emails', function () {
+    $faker = Factory::create();
+    $recipient = $faker->email();
+    $subject = $faker->words(5, asText: true);
+
+    Mail::raw('Test e-mail text', function ($message) use ($recipient, $subject) {
+        $message->to($recipient)
+            ->subject($subject);
+    });
+
+    assertDatabaseHas(Email::class, [
+        'to' => $recipient,
+        'subject' => $subject,
+    ]);
+
+    travel(Config::get('filament-email-log.keep_email_for_days'))->days();
+
+    artisan('model:prune', [
+        '--model' => 'Ramnzys\FilamentEmailLog\Models\Email',
+    ]);
+
+    assertDatabaseMissing(Email::class, [
+        'to' => $recipient,
+        'subject' => $subject,
+    ]);
 });
