@@ -2,6 +2,12 @@
 
 All notable changes to `filament-email-log` will be documented in this file.
 
+## 0.2.2 - 2022-07-27
+
+No new features.
+
+- Added proper testing for prunable email model.
+
 ## v0.2.1 - 2022-07-22
 
 - No functionality added or bugs fixed.
