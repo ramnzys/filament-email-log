@@ -1,11 +1,12 @@
 {
     "name": "ramnzys/filament-email-log",
     "description": "This package provides a Filament resource to view all Laravel outgoing emails.",
-    "keywords": [
-        "laravel", "filament", "email"
-    ],
-    "homepage": "https://github.com/ramnzys/filament-email-log",
     "license": "MIT",
+    "keywords": [
+        "laravel",
+        "filament",
+        "email"
+    ],
     "authors": [
         {
             "name": "Ramón E. Zayas",
@@ -13,6 +14,7 @@
             "role": "Developer"
         }
     ],
+    "homepage": "https://github.com/ramnzys/filament-email-log",
     "require": {
         "php": "^8.1",
         "filament/filament": "^2.12",
@@ -21,6 +23,7 @@
         "spatie/laravel-package-tools": "^1.9.2"
     },
     "require-dev": {
+        "ergebnis/composer-normalize": "^2.28",
         "fakerphp/faker": "^1.19",
         "friendsofphp/php-cs-fixer": "^3.8",
         "laravel/pint": "^1.1",
@@ -35,6 +38,8 @@
         "phpunit/phpunit": "^9.5",
         "spatie/laravel-ray": "^1.29"
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "Ramnzys\\FilamentEmailLog\\": "src",
@@ -46,27 +51,25 @@
             "Ramnzys\\FilamentEmailLog\\Tests\\": "tests"
         }
     },
-    "scripts": {
-        "analyse": "vendor/bin/phpstan analyse",
-        "style" : "vendor/bin/pint",
-        "test": "vendor/bin/pest",
-        "test-coverage": "vendor/bin/pest --coverage",
-        "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"
-    },
     "config": {
-        "sort-packages": true,
-        "allow-plugins": true
+        "allow-plugins": true,
+        "sort-packages": true
     },
     "extra": {
         "laravel": {
-            "providers": [
-                "Ramnzys\\FilamentEmailLog\\FilamentEmailLogServiceProvider"
-            ],
             "aliases": {
                 "FilamentEmailLog": "Ramnzys\\FilamentEmailLog\\Facades\\FilamentEmailLog"
-            }
+            },
+            "providers": [
+                "Ramnzys\\FilamentEmailLog\\FilamentEmailLogServiceProvider"
+            ]
         }
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    "scripts": {
+        "analyse": "vendor/bin/phpstan analyse",
+        "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes",
+        "style": "vendor/bin/pint",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage"
+    }
 }
