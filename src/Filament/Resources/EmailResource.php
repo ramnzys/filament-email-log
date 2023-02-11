@@ -12,55 +12,70 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables\Columns\TextColumn;
-use Illuminate\Support\Facades\Config;
+use Ramnzys\FilamentEmailLog\Models\Email;
 use Ramnzys\FilamentEmailLog\Filament\Resources\EmailResource\Pages\ListEmails;
 use Ramnzys\FilamentEmailLog\Filament\Resources\EmailResource\Pages\ViewEmail;
-use Ramnzys\FilamentEmailLog\Models\Email;
 
 class EmailResource extends Resource
 {
-    protected static ?string $model = Email::class;
+    public function __construct()
+    {
+        static::$model = config('filament-email-log.model.class', Email::class);
+    }
 
-    protected static ?string $navigationIcon = 'heroicon-o-mail';
+    public static function getModelLabel(): string
+    {
+        return config('filament-email-log.model.label', parent::getModelLabel());
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return config('filament-email-log.model.label_plural', parent::getPluralModelLabel());
+    }
+
+    protected static function getNavigationIcon(): string
+    {
+        return config('filament-email-log.navigation.icon', 'heroicon-o-collection');
+    }
 
     protected static function getNavigationGroup(): ?string
     {
-        return Config::get('filament-email-log.resource.group') ?? parent::getNavigationGroup();
+        return config('filament-email-log.navigation.group', parent::getNavigationGroup());
     }
 
     protected static function getNavigationSort(): ?int
     {
-        return Config::get('filament-email-log.resource.sort') ?? parent::getNavigationSort();
+        return config('filament-email-log.navigation.sort', parent::getNavigationSort());
     }
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Fieldset::make('Envelope')->schema([
-                    TextInput::make('created_at'),
-                    TextInput::make('from'),
-                    TextInput::make('to'),
-                    TextInput::make('cc'),
-                    TextInput::make('subject')->columnSpan(2),
+                Fieldset::make('Envelope')->label(__('Envelope'))->schema([
+                    TextInput::make('created_at')->label(__('Created at')),
+                    TextInput::make('from')->label(__('From')),
+                    TextInput::make('to')->label(__('To')),
+                    TextInput::make('cc')->label(__('Cc')),
+                    TextInput::make('subject')->label(__('Subject'))->columnSpan(2),
                 ])->columns(3),
                 Tabs::make('Content')->tabs([
-                    Tab::make('HTML')
+                    Tab::make('HTML')->label(__('HTML'))
                         ->schema([
                             ViewField::make('html_body')->disableLabel()
                                 ->view('filament-email-log::HtmlEmailView'),
                         ]),
-                    Tab::make('Text')
+                    Tab::make('Text')->label(__('Text'))
                         ->schema([
                             Textarea::make('text_body')->disableLabel(),
                         ]),
-                    Tab::make('Raw')
+                    Tab::make('Raw')->label(__('Raw'))
                         ->schema([
                             Textarea::make('raw_body')
                                 ->extraAttributes(['class' => 'font-mono text-xs'])
                                 ->disableLabel(),
                         ]),
-                    Tab::make('Debug information')
+                    Tab::make('Debug information')->label(__('Debug information'))
                         ->schema([
                             Textarea::make('sent_debug_info')
                                 ->extraAttributes(['class' => 'font-mono text-xs'])

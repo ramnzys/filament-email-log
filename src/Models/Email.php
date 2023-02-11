@@ -5,7 +5,6 @@ namespace Ramnzys\FilamentEmailLog\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Prunable;
-use Illuminate\Support\Facades\Config;
 
 /**
  * Email
@@ -37,6 +36,6 @@ class Email extends Model
      */
     public function prunable()
     {
-        return static::where('created_at', '<=', now()->subDays(Config::get('filament-email-log.keep_email_for_days')));
+        return static::where('created_at', '<=', now()->subDays(config('filament-email-log.keep_email_for_days')));
     }
 }
