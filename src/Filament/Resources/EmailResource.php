@@ -18,34 +18,34 @@ use Ramnzys\FilamentEmailLog\Filament\Resources\EmailResource\Pages\ViewEmail;
 
 class EmailResource extends Resource
 {
-    public function __construct()
+    public static function getModel(): string
     {
-        static::$model = config('filament-email-log.model.class', Email::class);
+        return config('filament-email-log.model.class') ?? Email::class;
     }
 
     public static function getModelLabel(): string
     {
-        return config('filament-email-log.model.label', parent::getModelLabel());
+        return config('filament-email-log.model.label') ?? parent::getModelLabel();
     }
 
     public static function getPluralModelLabel(): string
     {
-        return config('filament-email-log.model.label_plural', parent::getPluralModelLabel());
+        return config('filament-email-log.model.label_plural') ?? parent::getPluralModelLabel();
     }
 
     protected static function getNavigationIcon(): string
     {
-        return config('filament-email-log.navigation.icon', 'heroicon-o-collection');
+        return config('filament-email-log.navigation.icon') ?? 'heroicon-o-collection';
     }
 
     protected static function getNavigationGroup(): ?string
     {
-        return config('filament-email-log.navigation.group', parent::getNavigationGroup());
+        return config('filament-email-log.navigation.group') ?? parent::getNavigationGroup();
     }
 
     protected static function getNavigationSort(): ?int
     {
-        return config('filament-email-log.navigation.sort', parent::getNavigationSort());
+        return config('filament-email-log.navigation.sort') ?? parent::getNavigationSort();
     }
 
     public static function form(Form $form): Form
