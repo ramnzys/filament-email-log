@@ -11,7 +11,7 @@ return [
     ],
 
     'navigation' => [
-        'icon' => 'heroicon-o-server',
+        'icon' => 'heroicon-o-mail',
         'group' => null,
         'sort' => null,
     ],
