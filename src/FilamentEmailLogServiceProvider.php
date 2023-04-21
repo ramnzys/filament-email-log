@@ -35,4 +35,10 @@ class FilamentEmailLogServiceProvider extends PluginServiceProvider
 
         $this->app->register(EmailMessageServiceProvider::class);
     }
+    protected function getResources(): array
+    {
+        return [
+            config('filament-email-log.resource_class') ?? EmailResource::class,
+        ];
+    }
 }
