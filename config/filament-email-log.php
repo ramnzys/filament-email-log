@@ -1,11 +1,23 @@
 <?php
 
 // config for Ramnzys/FilamentEmailLog
+
 return [
 
-    'resource' => [
+    'model' => [
+        'class' => Ramnzys\FilamentEmailLog\Models\Email::class,
+        'label' => null,
+        'label_plural' => null,
+    ],
+
+    'navigation' => [
+        'icon' => 'heroicon-o-mail',
         'group' => null,
         'sort' => null,
+    ],
+
+    'resources' => [
+        'EmailResource' => Ramnzys\FilamentEmailLog\Filament\Resources\EmailResource::class,
     ],
 
     /**
