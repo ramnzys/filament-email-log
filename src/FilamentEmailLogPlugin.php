@@ -6,7 +6,7 @@ use Filament\Contracts\Plugin;
 use Filament\Panel;
 use Ramnzys\FilamentEmailLog\Filament\Resources\EmailResource;
 
-class FilamentEmailLogServiceProvider implements Plugin
+class FilamentEmailLogPlugin implements Plugin
 {
     public function getId(): string
     {
