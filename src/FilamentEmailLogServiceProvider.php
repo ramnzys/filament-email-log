@@ -17,9 +17,6 @@ class FilamentEmailLogServiceProvider extends PackageServiceProvider
          *
          * More info: https://github.com/spatie/laravel-package-tools
          */
-
-        parent::configurePackage($package);
-
         $package
             ->name('filament-email-log')
             ->hasConfigFile('filament-email-log')
