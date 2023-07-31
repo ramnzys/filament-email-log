@@ -15,7 +15,7 @@ class FilamentEmailLogPlugin implements Plugin
 
     public function register(Panel $panel): void
     {
-        $panel->registerResources([
+        $panel->resources([
             EmailResource::class,
         ]);
     }
