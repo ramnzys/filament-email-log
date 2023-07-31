@@ -51,7 +51,7 @@ You should register the `FilamentEmailLogPlugin` in your `Panel` provider:
 ```php
 use Ramnzys\FilamentEmailLog\FilamentEmailLogPlugin;
 
-$panel->plugin(FilamentEmailLogPlugin::class);
+$panel->plugin(new FilamentEmailLogPlugin);
 ```
 
 ### Customization
