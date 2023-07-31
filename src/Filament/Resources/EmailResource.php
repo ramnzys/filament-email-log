@@ -8,9 +8,9 @@ use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\ViewField;
-use Filament\Resources\Form;
+use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Resources\Table;
+use Filament\Tables\Table;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Support\Facades\Config;
 use Ramnzys\FilamentEmailLog\Filament\Resources\EmailResource\Pages\ListEmails;
@@ -21,14 +21,14 @@ class EmailResource extends Resource
 {
     protected static ?string $model = Email::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-mail';
+    protected static ?string $navigationIcon = 'heroicon-o-envelope';
 
-    protected static function getNavigationGroup(): ?string
+    public static function getNavigationGroup(): ?string
     {
         return Config::get('filament-email-log.resource.group') ?? parent::getNavigationGroup();
     }
 
-    protected static function getNavigationSort(): ?int
+    public static function getNavigationSort(): ?int
     {
         return Config::get('filament-email-log.resource.sort') ?? parent::getNavigationSort();
     }
@@ -47,24 +47,24 @@ class EmailResource extends Resource
                 Tabs::make('Content')->tabs([
                     Tab::make('HTML')
                         ->schema([
-                            ViewField::make('html_body')->disableLabel()
+                            ViewField::make('html_body')->hiddenLabel()
                                 ->view('filament-email-log::HtmlEmailView'),
                         ]),
                     Tab::make('Text')
                         ->schema([
-                            Textarea::make('text_body')->disableLabel(),
+                            Textarea::make('text_body')->hiddenLabel(),
                         ]),
                     Tab::make('Raw')
                         ->schema([
                             Textarea::make('raw_body')
                                 ->extraAttributes(['class' => 'font-mono text-xs'])
-                                ->disableLabel(),
+                                ->hiddenLabel(),
                         ]),
                     Tab::make('Debug information')
                         ->schema([
                             Textarea::make('sent_debug_info')
                                 ->extraAttributes(['class' => 'font-mono text-xs'])
-                                ->disableLabel(),
+                                ->hiddenLabel(),
                         ]),
                 ])->columnSpan(2),
             ]);
@@ -93,7 +93,7 @@ class EmailResource extends Resource
                     ->limit(50)
                     ->tooltip(function (TextColumn $column): ?string {
                         $state = $column->getState();
-                        if (strlen($state) <= $column->getLimit()) {
+                        if (strlen($state) <= $column->getCharacterLimit()) {
                             return null;
                         }
 

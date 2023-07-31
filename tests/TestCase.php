@@ -5,10 +5,12 @@ namespace Ramnzys\FilamentEmailLog\Tests;
 use BladeUI\Heroicons\BladeHeroiconsServiceProvider;
 use BladeUI\Icons\BladeIconsServiceProvider;
 use Filament\FilamentServiceProvider;
+use Filament\Actions\ActionsServiceProvider;
 use Filament\Forms\FormsServiceProvider;
 use Filament\Notifications\NotificationsServiceProvider;
 use Filament\Support\SupportServiceProvider;
 use Filament\Tables\TablesServiceProvider;
+use Filament\Widgets\WidgetsServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Schema\Blueprint;
 use Livewire\LivewireServiceProvider;
@@ -16,6 +18,7 @@ use Orchestra\Testbench\TestCase as Orchestra;
 use Ramnzys\FilamentEmailLog\FilamentEmailLogServiceProvider;
 use Ramnzys\FilamentEmailLog\Providers\EmailMessageServiceProvider;
 use Ramnzys\FilamentEmailLog\Tests\Models\User;
+use Ramnzys\FilamentEmailLog\Tests\Panels\TestPanelProvider;
 
 class TestCase extends Orchestra
 {
@@ -42,9 +45,13 @@ class TestCase extends Orchestra
             LivewireServiceProvider::class,
             SupportServiceProvider::class,
             TablesServiceProvider::class,
+            ActionsServiceProvider::class,
+            WidgetsServiceProvider::class,
 
             EmailMessageServiceProvider::class,
             FilamentEmailLogServiceProvider::class,
+
+            TestPanelProvider::class,
         ];
 
         if (class_exists(NotificationsServiceProvider::class)) {

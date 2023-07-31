@@ -46,7 +46,13 @@ return [
 
 ## Usage
 
-This package will automatically register the `EmailResource`. You will be able to see it when you visit your Filament admin panel.
+You should register the `FilamentEmailLogPlugin` in your `Panel` provider:
+
+```php
+use Ramnzys\FilamentEmailLog\FilamentEmailLogPlugin;
+
+$panel->plugin(new FilamentEmailLogPlugin);
+```
 
 ### Customization
 
