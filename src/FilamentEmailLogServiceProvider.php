@@ -18,8 +18,9 @@ class FilamentEmailLogServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('filament-email-log')
+            ->name(static::$name)
             ->hasConfigFile('filament-email-log')
+            ->hasViews()
             ->hasMigrations([
                 'create_filament_email_log_table',
                 'add_raw_and_debug_fields_to_filament_email_log_table',

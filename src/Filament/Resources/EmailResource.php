@@ -21,7 +21,7 @@ class EmailResource extends Resource
 {
     protected static ?string $model = Email::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-mail';
+    protected static ?string $navigationIcon = 'heroicon-o-envelope';
 
     public static function getNavigationGroup(): ?string
     {
