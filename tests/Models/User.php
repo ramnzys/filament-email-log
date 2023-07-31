@@ -3,6 +3,7 @@
 namespace Ramnzys\FilamentEmailLog\Tests\Models;
 
 use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
@@ -21,7 +22,7 @@ class User extends Model implements AuthorizableContract, AuthenticatableContrac
 
     protected $table = 'users';
 
-    public function canAccessFilament(): bool
+    public function canAccessPanel(Panel $panel): bool
     {
         return true;
     }
