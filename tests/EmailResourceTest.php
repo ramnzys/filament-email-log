@@ -21,7 +21,7 @@ it('shows dashboard to logged users', function () {
 });
 
 it('can render EmailResourcePage', function () {
-    actingAs($this->adminUser)->get(EmailResource::getUrl('index'))->assertSuccessful();
+    actingAs($this->adminUser)->get(EmailResource::getUrl('index', panel: 'test-panel'))->assertSuccessful();
 });
 
 it('can display an email', function () {
@@ -37,7 +37,7 @@ it('can display an email', function () {
     $email = Email::where('to', $recipient)->first();
 
     actingAs($this->adminUser)
-        ->get(EmailResource::getUrl('view', $email->id))
+        ->get(EmailResource::getUrl('view', parameters: [$email->id], panel: 'test-panel'))
         ->assertSee($recipient)
         ->assertSee($subject);
 });
