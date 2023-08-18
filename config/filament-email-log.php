@@ -2,7 +2,8 @@
 
 // config for Ramnzys/FilamentEmailLog
 return [
-
+    'resource_class' => \Ramnzys\FilamentEmailLog\Filament\Resources\EmailResource::class,
+    
     'resource' => [
         'group' => null,
         'sort' => null,
