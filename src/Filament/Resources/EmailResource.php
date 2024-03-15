@@ -80,7 +80,13 @@ class EmailResource extends Resource
                 TextColumn::make('from')
                     ->label(__('From'))
                     ->toggleable()
-                    ->searchable(),
+                    ->searchable()
+                    ->toggleable(
+                        isToggledHiddenByDefault:
+                        function(){
+                            return config('filament-email.hidden_column_from');
+                        }
+                    ),
                 TextColumn::make('to')
                     ->label(__('To'))
                     ->searchable(),

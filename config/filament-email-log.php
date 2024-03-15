@@ -13,4 +13,10 @@ return [
      */
     'keep_email_for_days' => 90,
 
+
+    /**
+     * Define table column From to be hidden
+     */
+    'hidden_column_from' => false,
+
 ];
